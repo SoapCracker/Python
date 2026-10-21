@@ -1,0 +1,27 @@
+<UserControl x:Class="Python.Screens.HighscoresControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Border Background="#D9091109" CornerRadius="12" BorderBrush="#39D353" BorderThickness="3"
+            HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40,28" Width="560">
+        <StackPanel>
+            <TextBlock Text="Highscores" FontFamily="{StaticResource PixelFont}" FontSize="26"
+                       Foreground="#39D353" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <ItemsControl x:Name="ScoreList">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontFamily="{StaticResource PixelFont}"
+                                   FontSize="13" Foreground="#D7F7E0" Margin="0,5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock x:Name="EmptyText" Text="Nog geen scores." FontFamily="{StaticResource PixelFont}"
+                       FontSize="12" Foreground="#9FB3A6" Visibility="Collapsed"/>
+
+            <Button Content="Terug" Style="{StaticResource SmallButton}" Margin="0,26,0,0"
+                    HorizontalAlignment="Center" Click="Back_Click"/>
+        </StackPanel>
+    </Border>
+</UserControl>

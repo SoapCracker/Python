@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <RootNamespace>Python</RootNamespace>
+    <AssemblyName>Python</AssemblyName>
+  </PropertyGroup>
+
+  <!-- Achtergrond en lettertype meeleveren in de .exe -->
+  <ItemGroup>
+    <Resource Include="Assets\background.png" />
+    <Resource Include="Assets\apple.png" />
+    <Resource Include="Fonts\PressStart2P-Regular.ttf" />
+  </ItemGroup>
+
+</Project>
