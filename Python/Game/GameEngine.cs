@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO.Compression;
 
 namespace Python.Game
 {
@@ -162,7 +163,7 @@ namespace Python.Game
             }
 
             // Count down to the next power-up only when nothing is on the board or active.
-            if (Settings.PowerUpsAan && !HasToken && ActivePowerUp == PowerUpType.Geen)
+            if (!HasToken && ActivePowerUp == PowerUpType.Geen)
             {
                 _nextPowerUpIn--;
                 if (_nextPowerUpIn <= 0) SpawnPowerUp();
@@ -176,7 +177,7 @@ namespace Python.Game
             int gegroeid = Snake.Count - _startLength;
             int delay = Settings.BaseMoveDelayMs - gegroeid * 8;
             if (delay < 55) delay = 55;
-            if (Settings.Difficulty == Difficulty.Makkelijk) delay = (int)(delay * 2.5); // Makkelijk: much slower
+            if (Settings.Difficulty == Difficulty.Makkelijk) delay = (int)(delay * 4.0); // Snelheid langzaam
             if (ActivePowerUp == PowerUpType.Rood) delay = (int)(delay * 0.6);
             if (ActivePowerUp == PowerUpType.Blauw) delay = (int)(delay * 1.6);
             return delay;
@@ -213,10 +214,10 @@ namespace Python.Game
             _nextPowerUpIn = RandomPowerUpDelay();
         }
 
-        // 14 to 20 seconds until the next power-up (so you see several per 120s game).
+        // 50 to 70 seconds until the next power-up.
         private int RandomPowerUpDelay()
         {
-            return 14 + _rng.Next(0, 7);
+            return 60 + _rng.Next(-10, 11);
         }
 
         private void NewRound()
@@ -289,4 +290,4 @@ namespace Python.Game
                 || (a == Direction.Right && b == Direction.Left);
         }
     }
-}
+}  

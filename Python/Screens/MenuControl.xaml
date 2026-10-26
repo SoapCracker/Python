@@ -12,6 +12,7 @@
         <Button Content="Start" Style="{StaticResource MenuButton}" Click="Start_Click"/>
         <Button Content="Highscores" Style="{StaticResource MenuButton}" Click="Highscores_Click"/>
         <Button Content="Instellingen" Style="{StaticResource MenuButton}" Click="Settings_Click"/>
+        <Button Content="Informatie" Style="{StaticResource MenuButton}" Click="Information_Click"/>
         <Button Content="Afsluiten" Style="{StaticResource MenuButton}" Click="Quit_Click"/>
     </StackPanel>
 </UserControl>

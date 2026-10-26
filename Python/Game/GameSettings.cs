@@ -6,7 +6,6 @@ namespace Python.Game
         public Difficulty Difficulty = Difficulty.Makkelijk;
         public int Level = 1;
         public Topic Topic = Topic.Programmeertalen;
-        public bool PowerUpsAan = true;
         public string SkinColor = "#57C785";
 
         // 7x7, 10x10 or 14x14 depending on level.

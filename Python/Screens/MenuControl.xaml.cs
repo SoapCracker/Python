@@ -14,5 +14,10 @@ namespace Python.Screens
         private void Highscores_Click(object sender, RoutedEventArgs e) { Main().ShowHighscores(); }
         private void Settings_Click(object sender, RoutedEventArgs e) { Main().ShowSettings(); }
         private void Quit_Click(object sender, RoutedEventArgs e) { Application.Current.Shutdown(); }
+
+        private void Information_Click(object sender, RoutedEventArgs e)
+        {
+            Main().ShowInformation();
+        }
     }
 }

@@ -33,9 +33,6 @@ namespace Python.Screens
             TopicTalen.IsChecked = s.Topic == Topic.Programmeertalen;
             TopicWiskunde.IsChecked = s.Topic == Topic.Wiskunde;
 
-            PowerAan.IsChecked = s.PowerUpsAan;
-            PowerUit.IsChecked = !s.PowerUpsAan;
-
             _skin = s.SkinColor;
             HighlightSkin();
         }
@@ -70,7 +67,6 @@ namespace Python.Screens
             else s.Level = 1;
 
             s.Topic = TopicWiskunde.IsChecked == true ? Topic.Wiskunde : Topic.Programmeertalen;
-            s.PowerUpsAan = PowerAan.IsChecked == true;
             s.SkinColor = _skin;
 
             Main().ShowMenu();
