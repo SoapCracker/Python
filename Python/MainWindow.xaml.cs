@@ -19,5 +19,6 @@ namespace Python
         public void ShowSettings() { Host.Content = new SettingsControl(); }
         public void ShowGame() { Host.Content = new GameControl(); }
         public void ShowHighscores() { Host.Content = new HighscoresControl(); }
-    }
+        public void ShowInformation() { Host.Content = new InfoScreenControl(); }
+    } 
 }

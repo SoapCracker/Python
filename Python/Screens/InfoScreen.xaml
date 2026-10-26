@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Python.Screens.InfoScreenControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="Transparent">
+    <Border Background="#D9091109" CornerRadius="12" BorderBrush="#39D353" BorderThickness="3"
+            HorizontalAlignment="Center" VerticalAlignment="Center" Padding="40,32" Width="560">
+        <StackPanel>
+            <!-- Titel -->
+            <TextBlock Text="Informatie" FontFamily="{StaticResource PixelFont}" FontSize="26"
+                       Foreground="#39D353" HorizontalAlignment="Center" Margin="0,0,0,30"/>
+
+            <!-- Instructies -->
+            <TextBlock Text="Gebruik de pijltjes toetsen of WASD om de slang te bewegen : 
+                       Doel is om de goede programeer taal te eten of wiskunde sommen op te lossen dit kun je ook aanpassen in het instellingen scherm veel speelplezier!"
+                       FontFamily="{StaticResource PixelFont}" FontSize="13" Foreground="#D7F7E0"
+                       TextWrapping="Wrap" TextAlignment="Center" Margin="0,0,0,30"/>
+
+            <!-- Terug-knop -->
+            <Button Content="Terug" Style="{StaticResource SmallButton}" Margin="0,10,0,0"
+                    HorizontalAlignment="Center" Click="Back_ClickINFO"/>
+        </StackPanel>
+    </Border>
+</UserControl>
