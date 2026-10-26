@@ -176,6 +176,7 @@ namespace Python.Game
         {
             int gegroeid = Snake.Count - _startLength;
             int delay = Settings.BaseMoveDelayMs - gegroeid * 8;
+            delay = (int)(delay * Settings.SpeedFactor); // player-chosen speed
             if (delay < 55) delay = 55;
             if (Settings.Difficulty == Difficulty.Makkelijk) delay = (int)(delay * 4.0); // Snelheid langzaam
             if (ActivePowerUp == PowerUpType.Rood) delay = (int)(delay * 0.6);
@@ -223,14 +224,49 @@ namespace Python.Game
         private void NewRound()
         {
             Apples.Clear();
-            List<Cell> vrij = FreeCells();
-            Shuffle(vrij);
+            List<Cell> plekken = PickApplePositions();
 
             Round ronde = Questions.Build(Settings, _rng);
             QuestionText = ronde.Question;
 
-            for (int i = 0; i < 4 && i < vrij.Count; i++)
-                Apples.Add(new Apple(vrij[i], ronde.Labels[i], i == ronde.CorrectIndex));
+            for (int i = 0; i < 4 && i < plekken.Count; i++)
+                Apples.Add(new Apple(plekken[i], ronde.Labels[i], i == ronde.CorrectIndex));
+        }
+
+        // Pick up to 4 apple spots that are easy to reach: away from the border and
+        // never touching each other (so you never get a wall of apples).
+        private List<Cell> PickApplePositions()
+        {
+            List<Cell> vrij = FreeCells();
+
+            // Prefer inner cells; fall back to all free cells if the inside is too crowded.
+            List<Cell> binnen = vrij.FindAll(c =>
+                c.Col > 0 && c.Col < GridSize - 1 && c.Row > 0 && c.Row < GridSize - 1);
+            List<Cell> pool = binnen.Count >= 4 ? binnen : vrij;
+            Shuffle(pool);
+
+            List<Cell> gekozen = new List<Cell>();
+            // First pass: keep every apple at least one empty tile apart (also diagonally).
+            foreach (Cell c in pool)
+            {
+                if (gekozen.Count == 4) break;
+                if (!TouchesAny(c, gekozen)) gekozen.Add(c);
+            }
+            // Second pass: if the spacing was too strict to reach 4, top up with what's left.
+            if (gekozen.Count < 4)
+                foreach (Cell c in pool)
+                {
+                    if (gekozen.Count == 4) break;
+                    if (!gekozen.Contains(c)) gekozen.Add(c);
+                }
+            return gekozen;
+        }
+
+        private static bool TouchesAny(Cell c, List<Cell> others)
+        {
+            foreach (Cell o in others)
+                if (Math.Abs(c.Col - o.Col) <= 1 && Math.Abs(c.Row - o.Row) <= 1) return true;
+            return false;
         }
 
         private List<Cell> FreeCells()

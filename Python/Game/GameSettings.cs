@@ -8,6 +8,17 @@ namespace Python.Game
         public Topic Topic = Topic.Programmeertalen;
         public string SkinColor = "#57C785";
 
+        // Extra speed multiplier on top of the level speed (lower delay = faster).
+        public double SpeedFactor
+        {
+            get
+            {
+                if (SpeedChoice == 0) return 1.4; // Langzaam
+                if (SpeedChoice == 2) return 0.7; // Snel
+                return 1.0;                        // Normaal
+            }
+        }
+
         // 7x7, 10x10 or 14x14 depending on level.
         public int GridSize
         {
