@@ -6,6 +6,7 @@ namespace Python.Game
         public Difficulty Difficulty = Difficulty.Makkelijk;
         public int Level = 1;
         public Topic Topic = Topic.Programmeertalen;
+        public int SpeedChoice = 1; // 0 = Langzaam, 1 = Normaal, 2 = Snel
         public string SkinColor = "#57C785";
 
         // Extra speed multiplier on top of the level speed (lower delay = faster).
