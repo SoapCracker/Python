@@ -36,6 +36,10 @@ namespace Python.Screens
             PowerAan.IsChecked = s.PowerUpsAan;
             PowerUit.IsChecked = !s.PowerUpsAan;
 
+            SpeedLangzaam.IsChecked = s.SpeedChoice == 0;
+            SpeedNormaal.IsChecked = s.SpeedChoice == 1;
+            SpeedSnel.IsChecked = s.SpeedChoice == 2;
+
             _skin = s.SkinColor;
             HighlightSkin();
         }
@@ -70,7 +74,13 @@ namespace Python.Screens
             else s.Level = 1;
 
             s.Topic = TopicWiskunde.IsChecked == true ? Topic.Wiskunde : Topic.Programmeertalen;
+
             s.PowerUpsAan = PowerAan.IsChecked == true;
+
+            if (SpeedLangzaam.IsChecked == true) s.SpeedChoice = 0;
+            else if (SpeedSnel.IsChecked == true) s.SpeedChoice = 2;
+            else s.SpeedChoice = 1;
+
             s.SkinColor = _skin;
 
             Main().ShowMenu();

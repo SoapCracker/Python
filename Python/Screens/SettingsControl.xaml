@@ -49,6 +49,13 @@
                 <RadioButton x:Name="PowerUit" GroupName="power" Content="Uit"/>
             </StackPanel>
 
+            <TextBlock Text="Snelheid" Style="{StaticResource Kop}"/>
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="SpeedLangzaam" GroupName="speed" Content="Langzaam"/>
+                <RadioButton x:Name="SpeedNormaal" GroupName="speed" Content="Normaal"/>
+                <RadioButton x:Name="SpeedSnel" GroupName="speed" Content="Snel"/>
+            </StackPanel>
+
             <TextBlock Text="Skin" Style="{StaticResource Kop}"/>
             <StackPanel Orientation="Horizontal" x:Name="SkinPanel">
                 <Button Tag="#57C785" Background="#57C785" Width="52" Height="38" Margin="0,0,10,0" BorderThickness="0" Click="Skin_Click"/>
