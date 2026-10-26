@@ -163,7 +163,7 @@ namespace Python.Game
             }
 
             // Count down to the next power-up only when nothing is on the board or active.
-            if (Settings.PowerUpsAan && !HasToken && ActivePowerUp == PowerUpType.Geen)
+            if (!HasToken && ActivePowerUp == PowerUpType.Geen)
             {
                 _nextPowerUpIn--;
                 if (_nextPowerUpIn <= 0) SpawnPowerUp();
@@ -215,10 +215,10 @@ namespace Python.Game
             _nextPowerUpIn = RandomPowerUpDelay();
         }
 
-        // 14 to 20 seconds until the next power-up (so you see several per 120s game).
+        // 50 to 70 seconds until the next power-up.
         private int RandomPowerUpDelay()
         {
-            return 14 + _rng.Next(0, 7);
+            return 60 + _rng.Next(-10, 11);
         }
 
         private void NewRound()
